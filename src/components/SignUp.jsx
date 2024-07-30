@@ -10,12 +10,13 @@ const SignUp = () => {
 
   const handleRegister = (email, password) => {
     axios
-      .post("https://api.escuelajs.co/api/v1/users/", {
+      .get("https://api.escuelajs.co/api/v1/auth/profile", {
         email,
         password,
       })
       .then((response) => {
         const data = response.data;
+        console.log(data);
         dispatch(
           setUser({ email: data.email, id: data.id, token: data.token })
         );
